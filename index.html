@@ -813,6 +813,73 @@ body {
   }
 }
 
+/* ============================================================
+   PORTFOLIO LOADING OVERLAY
+   ============================================================ */
+.site-loading-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 27, 46, 0.97) 0%,
+    rgba(13, 27, 46, 0.99) 55%,
+    rgba(8, 16, 27, 1) 100%
+  );
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+}
+
+.site-loading-overlay.site-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-loading-spinner-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.site-loading-spinner-ring svg.site-spin-ring {
+  position: absolute;
+  inset: 0;
+  width: 140px;
+  height: 140px;
+  animation: siteSpinAnim 1s linear infinite;
+}
+
+.site-loading-spinner-ring .site-inner-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-loading-spinner-ring .site-inner-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@keyframes siteSpinAnim {
+  to { transform: rotate(360deg); }
+}
+
+.site-loading-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.4px;
+}
+
 </style>
 </head>
 <body>
@@ -972,6 +1039,32 @@ body {
 <footer class="site-footer">
   <p>© 2026 Bailey Shives &nbsp;·&nbsp; Columbus, Ohio &nbsp;·&nbsp; <a href="mailto:baileyshives24@gmail.com">baileyshives24@gmail.com</a></p>
 </footer>
+
+<script>
+(function injectSiteLoadingOverlay() {
+  const overlay = document.createElement("div");
+  overlay.id = "siteLoadingOverlay";
+  overlay.className = "site-loading-overlay";
+  overlay.innerHTML = `
+    <div class="site-loading-spinner-ring">
+      <svg class="site-spin-ring" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="70" r="62" stroke="rgba(255,255,255,0.18)" stroke-width="4"/>
+        <path d="M70 8 A62 62 0 0 1 132 70" stroke="#B8975A" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="site-inner-icon">
+        <img src="https://i.postimg.cc/C5HM3jm9/Untitled-design-(4).png" alt="Site Icon">
+      </div>
+    </div>
+    <div class="site-loading-label">Loading Portfolio&hellip;</div>
+  `;
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.classList.add("site-fade-out");
+    setTimeout(() => overlay.remove(), 400);
+  }, 1500); // duration before fade starts, in ms
+})();
+</script>
 
 
 <script>
