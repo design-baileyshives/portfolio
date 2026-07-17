@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Morgan — Web Designer & Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:        #B8975A;
+  --gold-light:  #D4B87A;
+  --gold-pale:   #F5EDD8;
+  --navy:        #0D1B2E;
+  --navy-mid:    #1A2D45;
+  --navy-soft:   #253A52;
+  --ink:         #0D1B2E;
+  --mist:        #F7F5F0;
+  --smoke:       #EDE9E1;
+  --stone:       #9A9285;
+  --white:       #FFFFFF;
+  --radius-card: 4px;
+  --radius-btn:  3px;
+  --shadow-card: 0 2px 12px rgba(13,27,46,0.08), 0 1px 3px rgba(13,27,46,0.06);
+  --shadow-hover: 0 12px 40px rgba(13,27,46,0.18), 0 2px 8px rgba(13,27,46,0.10);
+  --transition:  0.22s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--mist);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HERO HEADER
+   ============================================================ */
+.site-header {
+  background:
+    linear-gradient(rgba(13, 27, 46, 0.97), rgba(13, 27, 46, 0.82)),
+    url('https://static.wixstatic.com/media/4f7dd4_2b06c6f364b040cc9dfd64d708d8d70d~mv2.jpeg?w=1600&q=80') center/cover no-repeat;
+  padding: 72px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+}
+
+.site-header .eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+/* Headshot */
+.headshot-ring {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  padding: 3px;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.headshot-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  /* Placeholder tint so it looks intentional without a real photo */
+  filter: sepia(10%) contrast(1.05);
+}
+
+.headshot-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--navy-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: -1px;
+}
+
+.site-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.site-header .tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.header-cta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  border: none;
+  padding: 13px 28px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  background: none;
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 13px 28px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition);
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ============================================================
+   ABOUT STRIP
+   ============================================================ */
+.about-section {
+  background: var(--white);
+  border-bottom: 1px solid var(--smoke);
+}
+
+.about-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 64px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-left {}
+
+.about-left .section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.about-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.about-left p {
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.about-left p:last-of-type { margin-bottom: 0; }
+
+.about-right {}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 32px;
+}
+
+.skill-chip {
+  background: var(--mist);
+  padding: 14px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.3px;
+  border-left: 2px solid var(--gold);
+}
+
+.stat-row {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--smoke);
+  padding-top: 24px;
+}
+
+.stat {}
+
+.stat .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1;
+  display: block;
+}
+
+.stat .label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   FILTER BAR
+   ============================================================ */
+.filter-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--smoke);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.filter-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--stone);
+  background: none;
+  border: none;
+  padding: 16px 18px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.filter-btn:hover { color: var(--navy); }
+.filter-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.grid-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--smoke);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-label .count {
+  font-weight: 400;
+  color: var(--stone);
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ============================================================
+   PROJECT CARD — full-bleed image with overlay reveal
+   ============================================================ */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Discipline accent strip */
+.card-discipline-strip {
+  height: 3px;
+}
+.card[data-discipline="branding"] .card-discipline-strip   { background: #B8975A; }
+.card[data-discipline="web"] .card-discipline-strip        { background: #6A8CAF; }
+.card[data-discipline="ecommerce"] .card-discipline-strip  { background: #8AB090; }
+.card[data-discipline="identity"] .card-discipline-strip   { background: #C09AB0; }
+.card[data-discipline="ux"] .card-discipline-strip         { background: #A0B0C8; }
+
+/* Image wrapper with overlay */
+.card-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--smoke);
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Hover overlay with brief + link */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,27,46,0.0) 0%, rgba(13,27,46,0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-excerpt {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.overlay-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: gap var(--transition);
+}
+
+.overlay-link:hover { gap: 12px; }
+
+.overlay-link .arrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Discipline badge */
+.discipline-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(245,237,216,0.92);
+  border: 1px solid var(--gold);
+  padding: 4px 10px;
+  border-radius: 2px;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+}
+
+/* Card body */
+.card-body {
+  padding: 22px 22px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-client {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* Tag pills */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--mist);
+  border: 1px solid var(--smoke);
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+
+/* Card footer */
+.card-footer {
+  padding: 0 22px 22px;
+}
+
+.btn-view {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--navy);
+  border: none;
+  padding: 13px 20px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.btn-view:hover {
+  background: var(--navy-mid);
+  transform: translateY(-1px);
+}
+
+.btn-view:active { transform: translateY(0); }
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+.contact-section {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+}
+
+.contact-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.contact-left .section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.contact-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
+
+.contact-left p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(184,151,90,0.12);
+  border: 1px solid rgba(184,151,90,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.contact-item-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.contact-item-value {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+}
+
+/* Contact form */
+.contact-right {}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--white);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-btn);
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+  width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(184,151,90,0.6);
+  background: rgba(255,255,255,0.09);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.btn-send {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  border: none;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  margin-top: 4px;
+}
+
+.btn-send:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.form-success {
+  display: none;
+  background: rgba(184,151,90,0.12);
+  border: 1px solid rgba(184,151,90,0.35);
+  border-radius: var(--radius-btn);
+  padding: 18px 20px;
+  margin-top: 4px;
+}
+
+.form-success.show { display: block; }
+
+.form-success p {
+  font-size: 13px;
+  color: var(--gold-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+  padding: 28px 24px;
+  color: rgba(255,255,255,0.25);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.site-footer a {
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-footer a:hover { color: var(--gold); }
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--stone);
+}
+
+.empty-state p { font-size: 14px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header { padding: 52px 20px 44px; }
+  .grid-section { padding: 32px 16px 60px; }
+  .project-grid { grid-template-columns: 1fr; gap: 18px; }
+  .filter-bar { overflow-x: auto; justify-content: flex-start; padding: 0 16px; }
+  .filter-btn { padding: 14px 14px; }
+  .about-inner { padding: 48px 20px; }
+  .contact-inner { padding: 56px 20px; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .stat-row { gap: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+   HEADER / HERO
+   ============================================================ -->
+<header class="site-header">
+  <p class="eyebrow">Web Design &amp; Development</p>
+
+  <div class="headshot-ring">
+    <img src="https://static.wixstatic.com/media/4f7dd4_35ba2bf28b68495ba00f48e2816f59fc~mv2.png" alt="Headshot" class="logo-desktop">
+  </div>
+
+  <h1>Bailey Shives</h1>
+  <p class="tagline">Designer &amp; Front-End Developer &nbsp;·&nbsp; Columbus, OH</p>
+
+  <div class="header-cta-row">
+    <a href="mailto:baileyshives24@gmail.com" class="btn-primary">Work With Me</a>
+    <a href="#work" class="btn-ghost">View My Work</a>
+  </div>
+</header>
+
+<!-- ============================================================
+   ABOUT SECTION
+   ============================================================ -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <span class="section-eyebrow">About Me</span>
+      <h2>I build things people enjoy using — and that clients are proud to show off.</h2>
+      <p>For nearly 6 years, I've been designing and building websites for small businesses, nonprofits, and residential multifamily communities across the country. My work starts with understanding what you actually need, not what a template already offers.</p>
+      <p>I care about the details that most people skip — typography that breathes, interactions that feel earned, copy that doesn't sound like a robot wrote it. Additionally, I specialize in code-based development, allowing for a better, more dynamic performance than one would see in a generic layout. Whether you need a fresh brand site, a complete redesign, or a custom e-commerce experience, I'll bring the same level of craft to all of it.</p>
+    </div>
+    <div class="about-right">
+      <div class="skills-grid">
+        <div class="skill-chip">HTML / CSS / JS</div>
+        <div class="skill-chip">Front-End Dev</div>
+        <div class="skill-chip">Brand Identity</div>
+        <div class="skill-chip">Shopify / E-Commerce</div>
+        <div class="skill-chip">Webflow / WordPress</div>
+        <div class="skill-chip">Motion &amp; Animation</div>
+        <div class="skill-chip">Copywriting</div>
+        <div class="skill-chip">SEO Foundations</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat">
+          <span class="num">60+</span>
+          <span class="label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="num">6</span>
+          <span class="label">Years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+   FILTER BAR
+   ============================================================ -->
+<nav class="filter-bar" aria-label="Filter projects" id="work">
+  <button class="filter-btn active" data-filter="all">Example Work</button>
+  <button class="filter-btn" data-filter="web">Web Design</button>
+  <button class="filter-btn" data-filter="branding">Widget Building</button>
+</nav>
+
+<!-- ============================================================
+   PROJECT GRID
+   ============================================================ -->
+<main class="grid-section">
+  <div class="section-label">
+    Selected Projects
+    <span class="count" id="project-count">— projects</span>
+  </div>
+
+  <div class="project-grid" id="project-grid">
+    <!-- Cards injected by JS -->
+  </div>
+
+  <div class="empty-state" id="empty-state">
+    <p>No projects match the selected filter.</p>
+  </div>
+</main>
+
+<!-- ============================================================
+   CONTACT SECTION
+   ============================================================ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+
+    <div class="contact-left">
+      <span class="section-eyebrow">Let's Talk</span>
+      <h2>Have a project in mind?</h2>
+      <p>I take on a limited number of new clients each quarter to make sure every project gets the attention it deserves. Reach out and let's figure out if we're a good fit.</p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <span class="contact-item-label">Email</span>
+            <!-- Replace with your real email -->
+            <span class="contact-item-value">baileyshives24@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <span class="contact-item-label">Based in</span>
+            <span class="contact-item-value">Columbus, Ohio — available remotely</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏱</div>
+          <div>
+            <span class="contact-item-label">Response time</span>
+            <span class="contact-item-value">Usually within two business days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="cf-name">Your Name *</label>
+            <input type="text" id="cf-name" name="name" required placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label for="cf-company">Company</label>
+            <input type="text" id="cf-company" name="company" placeholder="Acme Co.">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email Address *</label>
+          <input type="email" id="cf-email" name="email" required placeholder="jane@acmeco.com">
+        </div>
+        <div class="form-group">
+          <label for="cf-project">What are you working on?</label>
+          <textarea id="cf-project" name="project" placeholder="A quick description of your project, timeline, and budget is super helpful..."></textarea>
+        </div>
+        <button type="submit" class="btn-send">Send Message →</button>
+        <div class="form-success" id="contact-success">
+          <p>Thanks! I'll be in touch within one business day. Looking forward to hearing more about your project.</p>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+   FOOTER
+   ============================================================ -->
+<footer class="site-footer">
+  <p>© 2026 Bailey Shives &nbsp;·&nbsp; Columbus, Ohio &nbsp;·&nbsp; <a href="mailto:baileyshives24@gmail.com">baileyshives24@gmail.com</a></p>
+</footer>
+
+
+<script>
+/* ============================================================
+   PROJECT DATA
+   Replace images, links, descriptions, and tags with your own.
+   ============================================================ */
+const PROJECTS = [
+  {
+    id: "proj-1",
+    discipline: "web",
+    disciplineLabel: "Web Design",
+    client: "Legacy Development Partners",
+    name: "Retail Development Website",
+    description: "Full site design, maitenance, and hosting responsibilities for Legacy Development Partners, a comprehensive real estate company specializing in the development and redevelopment of sites across the country",
+    excerpt: "Website deployment was key in successful brand launch",
+    tags: ["Copywriting", "Brand Identity", "SEO"],
+    image: "https://i.postimg.cc/mgr9q6H8/Screen-Shot-2026-07-13-at-6-08-59-PM.png",
+    link: "https://www.legacydevpar.com/",
+  },
+  {
+    id: "proj-2",
+    discipline: "web",
+    disciplineLabel: "Web Design",
+    client: "Internal Reporting Dashboard",
+    name: "Executive Dashboard",
+    description: "An automated, dynamic reporting dashboard, utilizing both API fetches and Power Automate flows through a Cloudflare Worker to deliver up-to-the-minute data for an expansive and complex business portfolio.",
+    excerpt: "Centralized organization's reporting processes and procedures",
+    tags: ["Webflow", "Stacked API Fetching", "Github"],
+    image: "",
+    link: "https://www.liveatstonemesa.com/explore-our-sister-communities",
+  },
+  {
+    id: "proj-3",
+    discipline: "branding",
+    disciplineLabel: "Widget Building",
+    client: "Apartment Community",
+    name: "Sister Community Page",
+    description: "Standalone custom Sister Community page coded to supplement overall website, enhance SEO through backlinking, and drive leads to other options in same multifamily network",
+    excerpt: "Retains leads and furthers portfolio SEO efforts",
+    tags: ["Front-End Dev", "SEO Foundations"],
+    image: "https://i.postimg.cc/FRvHt763/Screen-Shot-2026-07-13-at-6-15-17-PM.png",
+    link: "https://www.liveatstonemesa.com/explore-our-sister-communities",
+  },
+  {
+    id: "proj-4",
+    discipline: "branding",
+    disciplineLabel: "Widget Building",
+    client: "Apartment Community",
+    name: "Pricing Breakdown Page",
+    description: "Dynamic page built to ensure community is compliant from a fee transparency perspective. The table fetches data automatically from SmartSheets, making pricing changes easy for client to manage",
+    excerpt: "Puts property website in compliant status per state fee transparency laws.",
+    tags: ["Motion & Animation", "HTML / CSS / JS"],
+    image: "https://i.postimg.cc/SRfrLT2q/Screen-Shot-2026-07-13-at-7-25-48-PM.png",
+    link: "https://www.lifeatara.com/pricing-breakdown",
+  },
+  {
+    id: "proj-5",
+    discipline: "web",
+    disciplineLabel: "Web Design",
+    client: "Internal Organization Resources",
+    name: "SharePoint Intranet Design",
+    description: "Example Github script coded exclusively for internal intranet page, providing team members with resources and information without needing to use SharePoint's rigid, drag-and-drop designer interface",
+    excerpt: "Elevates internal intranet and provides team members with resources and schedules",
+    tags: ["Motion & Animation", "HTML / CSS / JS"],
+    image: "https://i.postimg.cc/1RGqJ7Bg/Screen-Shot-2026-07-13-at-10-12-08-PM.png",
+    link: "https://design-baileyshives.github.io/sharepoint-intranet/",
+  },
+  {
+    id: "proj-6",
+    discipline: "branding",
+    disciplineLabel: "Widget Building",
+    client: "Apartment Community",
+    name: "Frequently Asked Questions Page",
+    description: "Accordion-style property FAQ page coded in Github and deployed to provide information on policies, amenities, and more to prospects and residents. Includes backlinks to both internal and external web pages",
+    excerpt: "Furthered SEO efforts and increased volume of information available to website traffic",
+    tags: ["Copywriting", "Github", "SEO Foundations"],
+    image: "https://i.postimg.cc/YSxCHQmb/Screen-Shot-2026-07-13-at-7-35-13-PM.png",
+    link: "https://www.liveatagaveranch.com/frequently-asked-questions",
+  },
+];
+
+/* ============================================================
+   RENDER CARDS
+   ============================================================ */
+let currentFilter = 'all';
+
+function renderCards(filter = 'all') {
+  const grid = document.getElementById('project-grid');
+  const emptyState = document.getElementById('empty-state');
+  const countEl = document.getElementById('project-count');
+
+  const filtered = filter === 'all'
+    ? PROJECTS
+    : PROJECTS.filter(p => p.discipline === filter);
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    emptyState.style.display = 'block';
+    grid.style.display = 'none';
+    countEl.textContent = '0 projects';
+    return;
+  }
+
+  emptyState.style.display = 'none';
+  grid.style.display = 'grid';
+  countEl.textContent = `${filtered.length} project${filtered.length !== 1 ? 's' : ''}`;
+
+  filtered.forEach(p => {
+    const tagsHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.discipline = p.discipline;
+
+    card.innerHTML = `
+      <div class="card-discipline-strip"></div>
+      <div class="card-image">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="card-overlay">
+          <p class="overlay-excerpt">${p.excerpt}</p>
+          <a href="${p.link}" class="overlay-link" target="_blank" rel="noopener">
+            View Project <span class="arrow">→</span>
+          </a>
+        </div>
+        <span class="discipline-badge">${p.disciplineLabel}</span>
+      </div>
+      <div class="card-body">
+        <p class="card-client">${p.client}</p>
+        <h2 class="card-name">${p.name}</h2>
+        <p class="card-description">${p.description}</p>
+        <div class="card-tags">${tagsHTML}</div>
+      </div>
+      <div class="card-footer">
+        <a href="${p.link}" class="btn-view" target="_blank" rel="noopener">View Project →</a>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   FILTER BUTTONS
+   ============================================================ */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderCards(currentFilter);
+  });
+});
+
+/* ============================================================
+   CONTACT FORM — wire to your backend / Formspree / EmailJS
+   ============================================================ */
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const name  = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+
+  if (!name || !email) {
+    document.getElementById('cf-name').focus();
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('cf-email').focus();
+    return;
+  }
+
+  const btn = this.querySelector('.btn-send');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  // ── EMAIL HOOK ─────────────────────────────────────────────
+  // Replace with your actual endpoint when ready, e.g.:
+  //
+  // await fetch('https://formspree.io/f/YOUR_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({
+  //     name:    document.getElementById('cf-name').value,
+  //     company: document.getElementById('cf-company').value,
+  //     email,
+  //     project: document.getElementById('cf-project').value,
+  //   }),
+  // });
+  // ── END HOOK ───────────────────────────────────────────────
+
+  await new Promise(r => setTimeout(r, 700));
+
+  this.querySelector('.btn-send').style.display = 'none';
+  document.getElementById('contact-success').classList.add('show');
+  this.reset();
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderCards('all');
+</script>
+</body>
+</html>
